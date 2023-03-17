@@ -1,31 +1,31 @@
-//¹«ÀÛÀ§·Î ½ÃÇè¼ºÀûÀ» ÀÔ·Â¹Þ¾Æ¼­ ÃÑÁ¡ÀÌ ³ôÀº ¼ø¼­´ë·Î Ãâ·ÂÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÑ´Ù.
-//1´Ü°è: mallocÀ¸·Î ÇÐ»ý ¼ö¿¡ µü¸Â°Ô ±¸Á¶Ã¼ ¹è¿­À» ¸¸µé¾î¼­ À§ÀÇ »óÈ²¿¡ ¸Â°Ô ÇØ°áÇÑ´Ù.
-//2´Ü°è: reallocÀ¸·Î ÇÐ»ý ¼ö¸¦ Ãß°¡ÇØ¼­ °°Àº ¹æ¹ýÀ¸·Î ÇØ°áÇØº¸ÀÚ. 
+//ë¬´ìž‘ìœ„ë¡œ ì‹œí—˜ì„±ì ì„ ìž…ë ¥ë°›ì•„ì„œ ì´ì ì´ ë†’ì€ ìˆœì„œëŒ€ë¡œ ì¶œë ¥í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•œë‹¤.
+//1ë‹¨ê³„: mallocìœ¼ë¡œ í•™ìƒ ìˆ˜ì— ë”±ë§žê²Œ êµ¬ì¡°ì²´ ë°°ì—´ì„ ë§Œë“¤ì–´ì„œ ìœ„ì˜ ìƒí™©ì— ë§žê²Œ í•´ê²°í•œë‹¤.
+//2ë‹¨ê³„: reallocìœ¼ë¡œ í•™ìƒ ìˆ˜ë¥¼ ì¶”ê°€í•´ì„œ ê°™ì€ ë°©ë²•ìœ¼ë¡œ í•´ê²°í•´ë³´ìž. 
 #include <stdio.h>
-#include <stdlib.h> //malloc, calloc, reallocÀÌ Æ÷ÇÔµÈ Çì´õ
+#include <stdlib.h> //malloc, calloc, reallocì´ í¬í•¨ëœ í—¤ë”
 
 typedef struct Student {
 	int no;
 	char name[20];
 	int mid;
 	int fi;
-}Student; //typedef´Â º°¸íÀ» Áþ±â À§ÇØ¼­ »ç¿ë. 
+}Student; //typedefëŠ” ë³„ëª…ì„ ì§“ê¸° ìœ„í•´ì„œ ì‚¬ìš©. 
 
 void Insert(Student* stu, int i) {
-	printf("ÇÐ¹ø : ");
-	scanf("%d", &(stu + i)->no); //½ÃÀÛÁÖ¼Ò¿¡ i¹øÂ°¸¸Å­ ´õÇÑ °÷ÀÇ ¹è¿­¿¡ ÀÔ·ÂÀ» ¹Þ´Â´Ù. 
-	printf("ÀÌ¸§ : ");
-	scanf("%s", (stu + i)->name); //¹®ÀÚ¿­ÀÌ¶ó¼­ & ÇÊ¿ä x
-	printf("Áß°£ : ");
+	printf("í•™ë²ˆ : ");
+	scanf("%d", &(stu + i)->no); //ì‹œìž‘ì£¼ì†Œì— ië²ˆì§¸ë§Œí¼ ë”í•œ ê³³ì˜ ë°°ì—´ì— ìž…ë ¥ì„ ë°›ëŠ”ë‹¤. 
+	printf("ì´ë¦„ : ");
+	scanf("%s", (stu + i)->name); //ë¬¸ìžì—´ì´ë¼ì„œ & í•„ìš” x
+	printf("ì¤‘ê°„ : ");
 	scanf("%d", &(stu + i)->mid);
-	printf("±â¸» : ");
+	printf("ê¸°ë§ : ");
 	scanf("%d", &(stu + i)->fi);
 }
 
-void Display(Student* stu, int n) { //¹è¿­ ÀüÃ¼¿Í ÇÐ»ý¼ö¸¦ ÀÎ¼ö·Î ¹Þ´Â´Ù. 
-	printf("%10s%10s%10s%10s\n", "ÇÐ¹ø", "ÀÌ¸§", "Áß°£", "±â¸»");
+void Display(Student* stu, int n) { //ë°°ì—´ ì „ì²´ì™€ í•™ìƒìˆ˜ë¥¼ ì¸ìˆ˜ë¡œ ë°›ëŠ”ë‹¤. 
+	printf("%10s%10s%10s%10s\n", "í•™ë²ˆ", "ì´ë¦„", "ì¤‘ê°„", "ê¸°ë§");
 
-	for (int i = 0; i < n; i++) { //ÇÐ»ý ¼ö¸¸Å­ ¹Ýº¹ÇÏ¸é¼­ ÇÏ³ª¾¿ Ãâ·Â
+	for (int i = 0; i < n; i++) { //í•™ìƒ ìˆ˜ë§Œí¼ ë°˜ë³µí•˜ë©´ì„œ í•˜ë‚˜ì”© ì¶œë ¥
 		printf("%10d", (stu+i)->no);
 		printf("%10s", (stu + i)->name);
 		printf("%10d", (stu + i)->mid);
@@ -36,21 +36,21 @@ void Display(Student* stu, int n) { //¹è¿­ ÀüÃ¼¿Í ÇÐ»ý¼ö¸¦ ÀÎ¼ö·Î ¹Þ´Â´Ù.
 
 void Sort(Student* stu, int n) {
 	for (int i = n - 1; i >= 0; i--) {
-		for (int j = 0; j < i; j++) { //0ºÎÅÍ i¹øÂ°±îÁö ¹Ýº¹ÇÏ¸é¼­
-			if (stu[j].mid + stu[j].fi < stu[j + 1].mid + stu[j + 1].fi) { //ÀÚ±âº¸´Ù µÚ¿¡ ÀÖ´Â µ¥ÀÌÅÍ°¡ Å©¸é ÀÚ¸®¸¦ ±³Ã¼
-				Student temp; //°°Àº ±¸Á¶Ã¼ º¯¼ö·Î ÀÓ½Ã ÀúÀå¼Ò º¯¼ö¸¦ ¼±¾ðÇÑ´Ù. 
+		for (int j = 0; j < i; j++) { //0ë¶€í„° ië²ˆì§¸ê¹Œì§€ ë°˜ë³µí•˜ë©´ì„œ
+			if (stu[j].mid + stu[j].fi < stu[j + 1].mid + stu[j + 1].fi) { //ìžê¸°ë³´ë‹¤ ë’¤ì— ìžˆëŠ” ë°ì´í„°ê°€ í¬ë©´ ìžë¦¬ë¥¼ êµì²´
+				Student temp; //ê°™ì€ êµ¬ì¡°ì²´ ë³€ìˆ˜ë¡œ ìž„ì‹œ ì €ìž¥ì†Œ ë³€ìˆ˜ë¥¼ ì„ ì–¸í•œë‹¤. 
 				temp = stu[j];
 				stu[j] = stu[j + 1];
 				stu[j + 1] = temp;
 			}
 		}
-	} //¹öºíÁ¤·Ä: ¾Ë°í¸®ÁòÀº ´Ü¼øÇÏÁö¸¸ Äü Á¤·Ä¿¡ ºñÇÏ¸é ¼Óµµ°¡ ´À¸®´Ù. 
+	} //ë²„ë¸”ì •ë ¬: ì•Œê³ ë¦¬ì¦˜ì€ ë‹¨ìˆœí•˜ì§€ë§Œ í€µ ì •ë ¬ì— ë¹„í•˜ë©´ ì†ë„ê°€ ëŠë¦¬ë‹¤. 
 }
 int main(void) {
 	int n, extra;
 	Student* stu = NULL;
 
-	printf("ÇÐ»ý ¼ö ÀÔ·Â : ");
+	printf("í•™ìƒ ìˆ˜ ìž…ë ¥ : ");
 	scanf("%d", &n);
 
 	stu = malloc(sizeof(Student) * n);
@@ -59,33 +59,32 @@ int main(void) {
 		Insert(stu, i);
 	}
 
-	puts("---------------------¿øº»---------------------");
+	puts("---------------------ì›ë³¸---------------------");
 	Display(stu, n);
 	puts("----------------------------------------------");
 
 	Sort(stu, n);
 
-	puts("---------------------Á¤·Ä---------------------");
+	puts("---------------------ì •ë ¬---------------------");
 	Display(stu, n);
 	puts("----------------------------------------------");
 
-	printf("Ãß°¡ ÇÐ»ý ¼ö ÀÔ·Â : ");
+	printf("ì¶”ê°€ í•™ìƒ ìˆ˜ ìž…ë ¥ : ");
 	scanf("%d", &extra);
 
-	stu = realloc(stu, sizeof(Student) * (n + extra)); 
-	//±âÁ¸ÇÐ»ý¼ö+Ãß°¡ÇÐ»ý¼ö ¸¸Å­ ¹è¿­ °ø°£À» ÀçÇÒ´çÇÑ´Ù.
+	stu = realloc(stu, sizeof(Student) * (n + extra)); //ê¸°ì¡´í•™ìƒìˆ˜+ì¶”ê°€í•™ìƒìˆ˜ ë§Œí¼ ë°°ì—´ ê³µê°„ì„ ìž¬í• ë‹¹í•œë‹¤.
 
 	for (int i = n; i < extra + n; i++) {
 		Insert(stu, i);
 	}
 
-	puts("---------------------¿øº»---------------------");
+	puts("---------------------ì›ë³¸---------------------");
 	Display(stu, n + extra);
 	puts("----------------------------------------------");
 
 	Sort(stu, n + extra);
 
-	puts("---------------------Á¤·Ä---------------------");
+	puts("---------------------ì •ë ¬---------------------");
 	Display(stu, n + extra);
 	puts("----------------------------------------------");
 }
