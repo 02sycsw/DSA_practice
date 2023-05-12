@@ -25,9 +25,9 @@ void Enq(int num) {
 		puts("큐가 가득 찼습니다.");
 		return;
 	}
-
-	rear = (rear + 1) % MAX;
+	
 	Q[rear] = num;
+	rear = (rear + 1) % MAX;
 }
 
 int Deq() {
